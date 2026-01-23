@@ -198,7 +198,8 @@ build-ruby:
 	cd clients/ruby/generated/ && \
 	  rm -f *.gem && \
 	  gem install bundler && \
-	  bundle install --binstubs && \
+	  bundle install && \
+	  bundle binstubs --all && \
 	  gem build *.gemspec && \
 	  gem install ./*.gem
 

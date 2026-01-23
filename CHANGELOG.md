@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Fixed
+- Fix deprecated --binstubs flag on build-ruby
+
 ## 5.0.0 - 2025-12-28
 ### Added
 - Add list-generators target to show the generators supported by OAG
