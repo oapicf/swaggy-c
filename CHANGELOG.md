@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Changed
+- Move validators installation from build-python to test-python
+
 ## 5.0.1 - 2026-01-24
 ### Fixed
 - Fix deprecated --binstubs flag on build-ruby

@@ -188,7 +188,7 @@ build-javascript:
 build-python:
 	cd clients/python/generated/ && \
 	  python3 -m venv .venv && \
-	  $(call python_venv,pip install twine wheel pytest setuptools validators) && \
+	  $(call python_venv,pip install twine wheel pytest setuptools) && \
 	  $(call python_venv,pip install -r requirements.txt) && \
 	  $(call python_venv,python3 setup.py sdist bdist_wheel) && \
 	  $(call python_venv,python3 setup.py install --single-version-externally-managed --record record.txt)
@@ -221,6 +221,7 @@ test-javascript: build-javascript
 
 test-python: build-python
 	cd clients/python/generated/ && \
+	  $(call python_venv,pip install validators) && \
 	  $(call python_venv,twine check dist/*) && \
 	  $(call python_venv,pytest -v ../../../test/python/*.py --capture=no)
 
