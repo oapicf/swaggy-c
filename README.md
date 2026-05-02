@@ -1,10 +1,8 @@
-<img align="right" src="https://raw.github.com/cliffano/swaggy-c/master/avatar.jpg" alt="Avatar"/>
+![Avatar](avatar.jpg)
 
 [![Build Status](https://github.com/cliffano/swaggy-c/actions/workflows/ci-workflow.yaml/badge.svg)](https://github.com/cliffano/swaggy-c/actions/workflows/ci-workflow.yaml)
-<br/>
 
-Swaggy C
---------
+# Swaggy C
 
 Swaggy C is a builder for [OpenAPI Generator](https://openapi-generator.tech/)-generated API clients in multiple technology stacks.
 
@@ -12,16 +10,14 @@ It provides utility targets for generating the API clients, building, testing, a
 
 Have a look at [Swaggy Jenkins](http://github.com/cliffano/swaggy-jenkins) as an example project that was built using Swaggy C.
 
-Installation
-------------
+## Installation
 
 1. Copy `src/Makefile-swaggy-c` to be the `Makefile` of your project:
     curl https://raw.githubusercontent.com/cliffano/swaggy-c/main/src/Makefile-swaggy-c -o Makefile
 2. Create configuration file `swaggy-c.yml` with properties described in [Configuration](#configuration) section
 3. Run the available `Makefile` targets described in [Usage](#usage) section
 
-Configuration
--------------
+## Configuration
 
 Create Swaggy C configuration file called `swaggy-c.yml` with contains the following properties:
 
@@ -38,8 +34,7 @@ Create Swaggy C configuration file called `swaggy-c.yml` with contains the follo
 | base_dir.local | Absolute path where the application base directory is located within your local environment, use this when no environment variable specified | `/Users/some-user/some-path/some-app` |
 | base_dir.custom | Absolute path where the application base directory is any custom directory, use this by setting CUSTOM environment variable | `/Users/some-user/some-path/some-app` |
 
-Usage
------
+## Usage
 
 The following targets are available:
 
@@ -64,8 +59,7 @@ The following targets are available:
 | doc-version | Generate API documentation locally as the application's version |
 | doc-publish | Publish documentation via GitHub Pages |
 
-Upgrade Guide
--------------
+## Upgrade Guide
 
 To 4.x.x:
 
@@ -76,8 +70,7 @@ To 2.x.x:
 * Copy clients/python/conf.json to clients/python-nextgen/conf.json
 * Rename all references of python to python-nextgen in GitHub Actions assets
 
-Colophon
---------
+## Colophon
 
 Related Project:
 
