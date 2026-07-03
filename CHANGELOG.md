@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Added
+- Add run hook, deps extra, and set generator vars
+- Add Markdown lint check
+
 ## 5.1.0 - 2026-01-24
 ### Changed
 - Move validators installation from build-python to test-python

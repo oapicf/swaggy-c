@@ -20,15 +20,9 @@ LOCAL_SPEC_PATH = stage/specification.yml
 
 ################################################################
 # User configuration variables
+# https://github.com/cliffano/swaggy-c#configuration
 # These variables should be stored in swaggy-c.yml config file,
 # and they will be parsed using yq https://github.com/mikefarah/yq
-# Example:
-# ---
-# spec_uri: specification/someapp.yml
-# version:1.2.3
-# base_dir:
-#   github_actions: /home/runner/work/someapp/someapp
-#   local: /home/someuser/someapp
 
 # SPEC_URI is the file path or URL where the OpenAPI specification is located, for example:
 # - local file path: spec/some-app.yaml
@@ -64,6 +58,19 @@ else
 	endif
 endif
 
+define set_generator_vars
+$(1): GENERATOR_COMPONENT = $$(shell yq .generator.component swaggy-c.yml)
+$(1): GENERATOR_INPUTS_PROJECT_ID = $$(shell yq .generator.inputs.project_id swaggy-c.yml)
+$(1): GENERATOR_INPUTS_PROJECT_NAME = $$(shell yq .generator.inputs.project_name swaggy-c.yml)
+$(1): GENERATOR_INPUTS_PROJECT_DESC = $$(shell yq .generator.inputs.project_desc swaggy-c.yml)
+$(1): GENERATOR_INPUTS_AUTHOR_NAME = $$(shell yq .generator.inputs.author_name swaggy-c.yml)
+$(1): GENERATOR_INPUTS_AUTHOR_EMAIL = $$(shell yq .generator.inputs.author_email swaggy-c.yml)
+$(1): GENERATOR_INPUTS_AUTHOR_URL = $$(shell yq .generator.inputs.author_url swaggy-c.yml)
+$(1): GENERATOR_INPUTS_GITHUB_ID = $$(shell yq .generator.inputs.github_id swaggy-c.yml)
+$(1): GENERATOR_INPUTS_GITHUB_REPO = $$(shell yq .generator.inputs.github_repo swaggy-c.yml)
+$(1): GENERATOR_INPUTS_GITHUB_TOKEN_PREFIX = $$(shell yq .generator.inputs.github_token_prefix swaggy-c.yml)
+endef
+
 define python_venv
 	. .venv/bin/activate && $(1)
 endef
@@ -73,6 +80,22 @@ $(info Building Swaggy C application with user configurations:)
 $(info - OpenAPI specification URI: ${SPEC_URI})
 $(info - Application version: ${APP_VERSION})
 $(info - Application base directory: ${APP_BASE_DIR})
+
+define run_hook
+	@if [ -f Makefile-extras ] && grep -q "^$(1):" Makefile-extras; then \
+		$(MAKE) -f Makefile-extras $(1); \
+	fi
+endef
+
+define deps_extra
+	@if command -v apt-get > /dev/null 2>&1; then \
+		if [ "$$(id -u)" = "0" ]; then \
+			$(MAKE) deps-extra-apt; \
+		else \
+			sudo $(MAKE) deps-extra-apt; \
+		fi; \
+	fi
+endef
 
 ################################################################
 # Base targets
@@ -95,6 +118,10 @@ clean:
 deps:
 	docker pull openapitools/openapi-generator-cli:v$(OPENAPI_GENERATOR_VERSION)
 	npm install -g bootprint bootprint-openapi gh-pages
+	$(call deps_extra)
+
+deps-extra-apt:
+	apt-get install -y markdownlint
 
 # Initialise OpenAPI specification from either a local file path or a remote URL
 # This target requires the following parameters to be supplied by user
