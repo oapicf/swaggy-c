@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add run hook, deps extra, and set generator vars
 - Add Markdown lint check
 
+### Changed
+- Update Makefile to use MAKEITSO standard
+
 ## 5.1.0 - 2026-01-24
 ### Changed
 - Move validators installation from build-python to test-python
