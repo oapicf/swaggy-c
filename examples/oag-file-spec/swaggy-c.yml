@@ -1,0 +1,25 @@
+---
+spec_uri: specification/google.yml
+version: 0.0.1-pre.0
+contact:
+  name: Cliffano Subagio
+  url: https://github.com/cliffano/swaggy-c
+  email: blah@cliffano.com
+scm:
+  git_user: cliffano
+  git_repo: swaggy-c
+base_dir:
+  github_actions: /home/runner/work/swaggy-c/swaggy-c/examples/oag-file-spec/
+  local: /Users/cliffano/dev/workspace-oapicf/swaggy-c/examples/oag-file-spec/
+  custom: /some/base/dir/example
+generator:
+  component: oag-file-spec
+  inputs:
+    project_id: swaggy-c-file-example
+    project_name: SwaggyCURLExample
+    project_desc: A sample OAG File-Spec project built by Swaggy C
+    author_name: OpenAPI Clients Factory
+    author_email: blah+oapicf@cliffano.com
+    author_url: https://github.com/oapicf
+    github_id: oapicf
+    github_repo: swaggy-c-file-example
