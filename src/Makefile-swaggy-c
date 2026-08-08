@@ -375,4 +375,4 @@ release-patch:
 
 ################################################################
 
-.PHONY: all test ci stage clean deps init-spec init-generators-config generate generate-all generate-primary build-javascript build-python build-ruby test-javascript test-python test-ruby publish-javascript publish-python publish-ruby doc doc-latest doc-version doc-publish
+.PHONY: $(1) all test ci stage clean deps init-spec init-generators-config generate generate-all generate-primary build-javascript build-python build-ruby test-javascript test-python test-ruby publish-javascript publish-python publish-ruby doc doc-latest doc-version doc-publish update-to-latest update-dotfiles update-partials

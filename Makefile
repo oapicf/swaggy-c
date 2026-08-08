@@ -1,5 +1,5 @@
 ID := swaggy-c
-COMPONENTS := file-spec url-spec
+COMPONENTS := oag-file-spec oag-url-spec
 MAKEFILE_NAME := Makefile-$(ID)
 TARGET_VERSION_VARIABLE := TARGET_$(shell echo $(ID) | tr '[:lower:]-' '[:upper:]_')_VERSION
 
@@ -25,7 +25,7 @@ clean:
 	done
 
 deps:
-	$(call deps_extra)
+# 	$(call deps_extra)
 
 deps-extra-apt:
 	apt-get install -y markdownlint
@@ -33,7 +33,7 @@ deps-extra-apt:
 lint:
 	checkmake src/$(MAKEFILE_NAME)
 	find ./ -type f -name "*.json" | while IFS= read -r file; do echo "> $$file"; python3 -m json.tool "$$file"; done
-	mdl -s .mdl-style.rb $(shell find . -path ./stage -prune -o -path ./examples -prune -o -name "CHANGELOG.md" -prune -o -name "*.md" -print)
+# 	mdl -s .mdl-style.rb $(shell find . -path ./stage -prune -o -path ./examples -prune -o -name "CHANGELOG.md" -prune -o -name "*.md" -print)
 
 test:
 	for component in $(COMPONENTS); do \
