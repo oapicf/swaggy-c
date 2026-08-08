@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Add run hook, deps extra, and set generator vars
 - Add Markdown lint check
+- Add partial markers
 
 ### Changed
 - Update Makefile to use MAKEITSO standard

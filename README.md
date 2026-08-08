@@ -1,6 +1,10 @@
+<!-- BEGIN:AVATAR -->
 ![Avatar](avatar.jpg)
+<!-- END:AVATAR -->
 
+<!-- BEGIN:BADGES -->
 [![Build Status](https://github.com/cliffano/swaggy-c/actions/workflows/ci-workflow.yaml/badge.svg)](https://github.com/cliffano/swaggy-c/actions/workflows/ci-workflow.yaml)
+<!-- END:BADGES -->
 
 # Swaggy C
 
@@ -12,8 +16,7 @@ Have a look at [Swaggy Jenkins](http://github.com/cliffano/swaggy-jenkins) as an
 
 ## Installation
 
-1. Copy `src/Makefile-swaggy-c` to be the `Makefile` of your project:
-    curl https://raw.githubusercontent.com/cliffano/swaggy-c/main/src/Makefile-swaggy-c -o Makefile
+1. Copy `src/Makefile-swaggy-c` to be the `Makefile` of your project: `curl https://raw.githubusercontent.com/cliffano/swaggy-c/main/src/Makefile-swaggy-c -o Makefile`
 2. Create configuration file `swaggy-c.yml` with properties described in [Configuration](#configuration) section
 3. Run the available `Makefile` targets described in [Usage](#usage) section
 
@@ -71,6 +74,15 @@ To 2.x.x:
 * Rename all references of python to python-nextgen in GitHub Actions assets
 
 ## Colophon
+
+<!-- BEGIN:DEVELOPERS_GUIDE -->
+[Developer's Guide](https://cliffano.github.io/developers-guide-makefile.html)
+<!-- END:DEVELOPERS_GUIDE -->
+
+<!-- BEGIN:BUILD_REPORTS -->
+Build reports:
+
+<!-- END:BUILD_REPORTS -->
 
 Related Project:
 
