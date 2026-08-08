@@ -1,4 +1,4 @@
-examples/*/clients/
+examples/*/clients/*/generated/
 examples/*/stage/
 
 # Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,macos
