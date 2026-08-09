@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add Markdown lint check
 - Add partial markers
 - Add examples for each component
+- Add test-examples target
 
 ### Changed
 - Update Makefile to use MAKEITSO standard
