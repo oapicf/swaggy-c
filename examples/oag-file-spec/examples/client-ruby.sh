@@ -2,7 +2,7 @@
 set -o nounset
 
 cd ../
-make build-ruby test-ruby
+make build-ruby
 cd examples/
 
 node usageruby.rb

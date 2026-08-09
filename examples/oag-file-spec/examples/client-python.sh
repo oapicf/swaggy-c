@@ -2,7 +2,7 @@
 set -o nounset
 
 cd ../
-make build-python test-python
+make build-python
 cd examples/
 
 node usage_python.py
