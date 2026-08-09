@@ -99,6 +99,9 @@ deps:
 deps-extra-apt:
 	apt-get install -y markdownlint
 
+deps-upgrade:
+	echo "PLACEHOLDER"
+
 # Initialise OpenAPI specification from either a local file path or a remote URL
 # This target requires the following parameters to be supplied by user
 # - SPEC_URI parameter

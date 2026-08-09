@@ -99,6 +99,9 @@ deps:
 deps-extra-apt:
 	apt-get install -y markdownlint
 
+deps-upgrade:
+	echo "PLACEHOLDER"
+
 # Initialise OpenAPI specification from either a local file path or a remote URL
 # This target requires the following parameters to be supplied by user
 # - SPEC_URI parameter
@@ -172,6 +175,7 @@ generate-primary:
 # API clients building targets for primary generators
 
 build-javascript:
+	$(call run_hook,x-pre-build-javascript)
 	npm install -g babel-cli
 	cd clients/javascript/generated/ && \
 	  npm install && \
@@ -179,6 +183,7 @@ build-javascript:
 	  npm run build
 
 build-python:
+	$(call run_hook,x-pre-build-python)
 	cd clients/python/generated/ && \
 	  python3 -m venv .venv && \
 	  $(call python_venv,pip install twine wheel pytest setuptools) && \
@@ -187,6 +192,7 @@ build-python:
 	  $(call python_venv,python3 setup.py install --single-version-externally-managed --record record.txt)
 
 build-ruby:
+	$(call run_hook,x-pre-build-ruby)
 	apt-get install libyaml-dev
 	cd clients/ruby/generated/ && \
 	  rm -f *.gem && \
@@ -203,6 +209,7 @@ build-ruby:
 test: test-javascript test-python test-ruby
 
 test-javascript: build-javascript
+	$(call run_hook,x-pre-test-javascript)
 	npm install -g mocha
 	npm install validator
 	cd clients/javascript/generated/ && \
@@ -223,6 +230,13 @@ test-ruby: build-ruby
 	  rm -f *.gem && \
 	  bundle exec rspec --format documentation && \
 	  bundle exec rspec ../../../test/ruby/ --format documentation
+
+test-examples:
+	mkdir -p stage/test-examples/
+	cd examples && \
+	for f in *.sh; do \
+	  bash -x "$$f"; \
+	done
 
 ################################################################
 # API clients package publishing targets for primary generators
