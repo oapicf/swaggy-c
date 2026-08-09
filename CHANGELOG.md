@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add partial markers
 - Add examples for each component
 - Add test-examples target
+- Add pre run hook to build-javascript, build-python, build-ruby, and test-javascript
 
 ### Changed
 - Update Makefile to use MAKEITSO standard
