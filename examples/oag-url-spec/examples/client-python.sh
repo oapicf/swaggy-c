@@ -1,8 +1,10 @@
-#!/usr/bin/bash
+#!/bin/bash
 set -o nounset
 
 cd ../
 make build-python
 cd examples/
 
-node usage_python.py
+. ../clients/python/generated/.venv/bin/activate
+
+python usage_python.py
