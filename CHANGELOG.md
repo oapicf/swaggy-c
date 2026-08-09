@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Update Makefile to use MAKEITSO standard
+- Move npm link from build-javascript to test-javascript
 
 ### Fixed
 - Fix component names to have oag- prefix
