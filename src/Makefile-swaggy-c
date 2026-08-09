@@ -205,8 +205,6 @@ test: test-javascript test-python test-ruby
 test-javascript: build-javascript
 	npm install -g mocha
 	npm install validator
-	cd test/javascript/ && \
-	  npm link ../../clients/javascript/generated/
 	cd clients/javascript/generated/ && \
 	  npm install --dev && \
 	  npm run test
