@@ -60,7 +60,6 @@ The following targets are available:
 | doc | Alias for doc-latest target |
 | doc-latest | Generate API documentation locally as the latest version |
 | doc-version | Generate API documentation locally as the application's version |
-| doc-publish | Publish documentation via GitHub Pages |
 
 ## Upgrade Guide
 

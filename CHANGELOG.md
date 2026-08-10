@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Changed
+- Move documentation publishing to stage/gh-pages/
+
+### Removed
+- Remove doc-publish now that publishing is done via GH workflows
+
 ## 6.1.0 - 2026-08-10
 ### Added
 - Add new generators: cpp-httplib-server cpp-boost-beast-client ruby-nextgen rust-salvo

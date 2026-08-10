@@ -268,10 +268,6 @@ doc-latest:
 doc-version:
 	bootprint openapi $(LOCAL_SPEC_PATH) doc/api/$(APP_VERSION)/
 
-# Publish documentation via GitHub Pages
-doc-publish:
-	CACHE_DIR=/tmp gh-pages --dist doc/
-
 ################################################################
 # MAKE IT SO - Utility Makefile functions and targets
 ################################################################
@@ -387,4 +383,4 @@ release-patch:
 
 ################################################################
 
-.PHONY: $(1) all test ci stage clean deps init-spec init-generators-config generate generate-all generate-primary build-javascript build-python build-ruby test-javascript test-python test-ruby publish-javascript publish-python publish-ruby doc doc-latest doc-version doc-publish update-to-latest update-dotfiles update-partials
+.PHONY: $(1) all test ci stage clean deps init-spec init-generators-config generate generate-all generate-primary build-javascript build-python build-ruby test-javascript test-python test-ruby publish-javascript publish-python publish-ruby doc doc-latest doc-version update-to-latest update-dotfiles update-partials

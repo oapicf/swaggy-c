@@ -84,7 +84,7 @@ all: ci
 
 # Ensure stage directory exists
 stage:
-	mkdir -p stage
+	mkdir -p stage stage/gh-pages/
 
 # Remove all generated API clients code
 clean:
@@ -260,17 +260,13 @@ publish-ruby: build-ruby
 doc: doc-latest
 
 # Generate API documentation locally as the latest version
-doc-latest:
-	bootprint openapi $(LOCAL_SPEC_PATH) doc/api/latest/
+doc-latest: stage
+	bootprint openapi $(LOCAL_SPEC_PATH) stage/gh-pages/api/latest/
 
 # Generate API documentation locally as the application's version
 # This target requires APP_VERSION parameter to be supplied by user
-doc-version:
-	bootprint openapi $(LOCAL_SPEC_PATH) doc/api/$(APP_VERSION)/
-
-# Publish documentation via GitHub Pages
-doc-publish:
-	CACHE_DIR=/tmp gh-pages --dist doc/
+doc-version: stage
+	bootprint openapi $(LOCAL_SPEC_PATH) stage/gh-pages/api/$(APP_VERSION)/
 
 ################################################################
 # MAKE IT SO - Utility Makefile functions and targets
@@ -387,4 +383,4 @@ release-patch:
 
 ################################################################
 
-.PHONY: $(1) all test ci stage clean deps init-spec init-generators-config generate generate-all generate-primary build-javascript build-python build-ruby test-javascript test-python test-ruby publish-javascript publish-python publish-ruby doc doc-latest doc-version doc-publish update-to-latest update-dotfiles update-partials
+.PHONY: $(1) all test ci stage clean deps init-spec init-generators-config generate generate-all generate-primary build-javascript build-python build-ruby test-javascript test-python test-ruby publish-javascript publish-python publish-ruby doc doc-latest doc-version update-to-latest update-dotfiles update-partials
