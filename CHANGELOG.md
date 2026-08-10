@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Added
+- Add new generators: cpp-httplib-server cpp-boost-beast-client ruby-nextgen rust-salvo
+
+### Changed
+- Upgrade OpenAPI Generator to 7.24.0
+
 ## 6.0.0 - 2026-08-09
 ### Added
 - Add run hook, deps extra, and set generator vars
