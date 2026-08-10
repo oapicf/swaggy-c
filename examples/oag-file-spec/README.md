@@ -1,9 +1,9 @@
 <!-- BEGIN:AVATAR -->
-To be populated by generator-openapi-generator oag-file-spec-partials
+<img align="right" src="https://raw.github.com/oapicf/swaggy-c-file-example/main/avatar.jpg" alt="Avatar"/>
 <!-- END:AVATAR -->
 
 <!-- BEGIN:BADGES -->
-To be populated by generator-openapi-generator oag-file-spec-partials
+[![Build Status](https://github.com/oapicf/swaggy-c-file-example/actions/workflows/ci-workflow.yaml/badge.svg)](https://github.com/oapicf/swaggy-c-file-example/actions/workflows/ci-workflow.yaml)
 <!-- END:BADGES -->
 
 # OAGFileSpec Example
@@ -13,9 +13,9 @@ OAGFileSpec Example is an example OpenAPI Generator package using file-based spe
 ## Colophon
 
 <!-- BEGIN:DEVELOPERS_GUIDE -->
-To be populated by generator-openapi-generator oag-file-spec-partials
+[Developer's Guide](https://oapicf.github.io/developers-guide-openapi-generator.html)
 <!-- END:DEVELOPERS_GUIDE -->
 
 <!-- BEGIN:BUILD_REPORTS -->
-To be populated by generator-openapi-generator oag-file-spec-partials
+* [API Documentation](https://oapicf.github.io/swaggy-c-file-example/api/latest/)
 <!-- END:BUILD_REPORTS -->
