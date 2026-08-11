@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Fixed
+- Fix mocha exec in test-javascript by using absolute path
+
 ## 6.2.0 - 2026-08-10
 ### Changed
 - Move documentation publishing to stage/gh-pages/
