@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Fixed
+- Fix JavaScript trusted publishing caused by missing repository.url in generated package.json
+
 ## 6.2.1 - 2026-08-11
 ### Fixed
 - Fix mocha exec in test-javascript by using absolute path
