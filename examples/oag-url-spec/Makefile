@@ -4,7 +4,7 @@
 ################################################################
 
 # Swaggy C info
-SWAGGY_C_VERSION = 6.0.1-pre.0
+SWAGGY_C_VERSION = 6.2.0
 
 # The version of OpenAPI Generator (https://openapi-generator.tech/) used for generating the API clients
 OPENAPI_GENERATOR_VERSION = 7.24.0
@@ -84,7 +84,7 @@ all: ci
 
 # Ensure stage directory exists
 stage:
-	mkdir -p stage
+	mkdir -p stage stage/gh-pages/
 
 # Remove all generated API clients code
 clean:
@@ -260,13 +260,13 @@ publish-ruby: build-ruby
 doc: doc-latest
 
 # Generate API documentation locally as the latest version
-doc-latest:
-	bootprint openapi $(LOCAL_SPEC_PATH) doc/api/latest/
+doc-latest: stage
+	bootprint openapi $(LOCAL_SPEC_PATH) stage/gh-pages/api/latest/
 
 # Generate API documentation locally as the application's version
 # This target requires APP_VERSION parameter to be supplied by user
-doc-version:
-	bootprint openapi $(LOCAL_SPEC_PATH) doc/api/$(APP_VERSION)/
+doc-version: stage
+	bootprint openapi $(LOCAL_SPEC_PATH) stage/gh-pages/api/$(APP_VERSION)/
 
 ################################################################
 # MAKE IT SO - Utility Makefile functions and targets

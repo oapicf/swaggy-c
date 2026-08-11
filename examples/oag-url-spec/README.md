@@ -1,9 +1,9 @@
 <!-- BEGIN:AVATAR -->
-To be populated by generator-openapi-generator oag-file-spec-partials
+![Avatar](avatar.jpg)
 <!-- END:AVATAR -->
 
 <!-- BEGIN:BADGES -->
-To be populated by generator-openapi-generator oag-file-spec-partials
+[![Build Status](https://github.com/oapicf/swaggy-c-url-example/actions/workflows/ci-workflow.yaml/badge.svg)](https://github.com/oapicf/swaggy-c-url-example/actions/workflows/ci-workflow.yaml)
 <!-- END:BADGES -->
 
 # OAGURLSpec Example
@@ -13,9 +13,9 @@ OAGURLSpec Example is an example OpenAPI Generator package using URL-based speci
 ## Colophon
 
 <!-- BEGIN:DEVELOPERS_GUIDE -->
-To be populated by generator-openapi-generator oag-file-spec-partials
+[Developer's Guide](https://oapicf.github.io/developers-guide-openapi-generator.html)
 <!-- END:DEVELOPERS_GUIDE -->
 
 <!-- BEGIN:BUILD_REPORTS -->
-To be populated by generator-openapi-generator oag-file-spec-partials
+* [API Documentation](https://oapicf.github.io/swaggy-c-url-example/api/latest/)
 <!-- END:BUILD_REPORTS -->
