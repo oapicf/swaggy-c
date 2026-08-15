@@ -155,6 +155,7 @@ generate-all:
 		  --generator-name $$generator \
 		  --output /local/clients/$$generator/generated; \
 	done
+	$(call run_hook,x-post-generate-all)
 
 # Generate API clients for primary generators only
 # This target requires APP_BASE_DIR parameter to be supplied by user
@@ -170,6 +171,7 @@ generate-primary:
 		  --generator-name $$generator \
 		  --output /local/clients/$$generator/generated; \
 	done
+	$(call run_hook,x-post-generate-primary)
 
 ################################################################
 # API clients building targets for primary generators
