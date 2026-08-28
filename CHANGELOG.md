@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Added
+- Add run hook x-post-init-spec
+
 ## 6.3.0 - 2026-08-15
 ### Added
 - Add run hooks x-post-generate-all and x-post-generate-primary
