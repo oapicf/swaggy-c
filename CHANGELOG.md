@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Changed
+- Modify generate-* to fail fast on first error
+
 ## 6.4.0 - 2026-08-28
 ### Added
 - Add run hook x-post-init-spec
