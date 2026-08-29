@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Added
+- Change ci target order to prioritise primary before generating all
+
+### Removed
+- Remove exit on error for generate all, keep it for generate primary
+
 ## 6.5.0 - 2026-08-29
 ### Added
 - Add generator banner to simplify log troubleshooting
