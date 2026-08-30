@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## Unreleased
+### Added
+- Add optional GENERATORS_EXTRA_ARGS configuration to pass extra arguments to generate-all and generate-primary targets
 
 ## 6.6.0 - 2026-08-29
 ### Added

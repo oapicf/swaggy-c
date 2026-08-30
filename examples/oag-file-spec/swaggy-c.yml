@@ -12,6 +12,8 @@ base_dir:
   github_actions: /home/runner/work/swaggy-c/swaggy-c/examples/oag-file-spec/
   local: /Users/cliffano/dev/workspace-oapicf/swaggy-c/examples/oag-file-spec/
   custom: /some/base/dir/example
+# generators_extra_args is optional, it defaults to an empty string when not set here
+# generators_extra_args: --skip-validate-spec
 generator:
   component: oag-file-spec
   inputs:

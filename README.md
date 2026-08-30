@@ -36,6 +36,7 @@ Create Swaggy C configuration file called `swaggy-c.yml` with contains the follo
 | base_dir.github_actions | Absolute path where the application base directory is located within GitHub Actions runner, use this by setting GITHUB_ACTIONS environment variable | `/home/runner/work/some-app/some-app` |
 | base_dir.local | Absolute path where the application base directory is located within your local environment, use this when no environment variable specified | `/Users/some-user/some-path/some-app` |
 | base_dir.custom | Absolute path where the application base directory is any custom directory, use this by setting CUSTOM environment variable | `/Users/some-user/some-path/some-app` |
+| generators_extra_args | Optional extra arguments passed to the OpenAPI Generator CLI generate command, on top of the default arguments used by the `generate-all` and `generate-primary` targets. Defaults to an empty string when not set | `--additional-properties=someProp=someValue --skip-validate-spec` |
 
 ## Usage
 
