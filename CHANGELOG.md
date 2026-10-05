@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Changed
+- Upgrade Ubuntu to 26.04
+- Upgrade cliffano/studio to 4.0.0
+
 ## 6.7.0 - 2026-08-30
 ### Added
 - Add optional GENERATORS_EXTRA_ARGS configuration to pass extra arguments to generate-all and generate-primary targets
