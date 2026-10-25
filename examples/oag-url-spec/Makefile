@@ -7,7 +7,7 @@
 SWAGGY_C_VERSION = 6.2.0
 
 # The version of OpenAPI Generator (https://openapi-generator.tech/) used for generating the API clients
-OPENAPI_GENERATOR_VERSION = 7.24.0
+OPENAPI_GENERATOR_VERSION = 7.26.0
 
 UPDATE_GH_ID = oapicf
 UPDATE_MAKEFILE = swaggy-c
