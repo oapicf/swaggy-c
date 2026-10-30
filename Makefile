@@ -30,6 +30,13 @@ deps:
 deps-extra-apt:
 	apt-get install -y markdownlint
 
+update-examples:
+	for component in $(COMPONENTS); do \
+	  (cd examples/$$component/ && \
+	    make -f ../../src/$(MAKEFILE_NAME) deps update-to-latest update-dotfiles update-partials &&\
+		cd ../../); \
+	done
+
 lint:
 	checkmake src/$(MAKEFILE_NAME)
 	find ./ -type f -name "*.json" | while IFS= read -r file; do echo "> $$file"; python3 -m json.tool "$$file"; done
@@ -55,4 +62,4 @@ release-patch:
 
 release: release-minor
 
-.PHONY: all ci clean deps deps-extra-apt lint test release-major release-minor release-patch release
+.PHONY: all ci clean deps deps-extra-apt update-examples lint test release-major release-minor release-patch release
