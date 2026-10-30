@@ -4,7 +4,7 @@
 ################################################################
 
 # Swaggy C info
-SWAGGY_C_VERSION = 6.2.0
+SWAGGY_C_VERSION = 6.8.0
 
 # The version of OpenAPI Generator (https://openapi-generator.tech/) used for generating the API clients
 OPENAPI_GENERATOR_VERSION = 7.26.0
@@ -46,6 +46,13 @@ CONTACT_EMAIL ?= $(shell yq .contact.email swaggy-c.yml)
 SCM_GIT_USER ?= $(shell yq .scm.git_user swaggy-c.yml)
 SCM_GIT_REPO ?= $(shell yq .scm.git_repo swaggy-c.yml)
 
+# GENERATORS_EXTRA_ARGS is an optional set of extra arguments to be passed to the
+# OpenAPI Generator CLI generate command, on top of the default arguments used by
+# the generate-all and generate-primary targets. This is optional, it defaults to
+# an empty string when it's not configured in swaggy-c.yml, for example:
+# --additional-properties=someProp=someValue --skip-validate-spec
+GENERATORS_EXTRA_ARGS ?= $(shell yq '.generators_extra_args // ""' swaggy-c.yml)
+
 # APP_BASE_DIR is the absolute path where the application base directory is located, for example:
 # - MacOS user workspace as a local directory: /Users/some-user/some-path/some-app
 #   This is used when no environment variable is specified.
@@ -68,6 +75,7 @@ $(info Building Swaggy C application with user configurations...)
 $(info - OpenAPI specification URI = ${SPEC_URI})
 $(info - Application version = ${APP_VERSION})
 $(info - Application base directory = ${APP_BASE_DIR})
+$(info - Generators extra arguments = ${GENERATORS_EXTRA_ARGS})
 
 define python_venv
 	. .venv/bin/activate && $(1)
@@ -77,7 +85,7 @@ endef
 # Base targets
 
 # CI target to be executed by CI/CD tool
-ci: clean deps init-spec generate build-javascript build-python build-ruby test-javascript test-python test-ruby doc
+ci: clean deps init-spec generate-primary build-javascript build-python build-ruby test-javascript test-python test-ruby generate doc
 
 # All target as an alias for CI target
 all: ci
@@ -115,6 +123,7 @@ init-spec: stage
 	  cp $(SPEC_URI) $(LOCAL_SPEC_PATH); \
 	fi
 	yq -i '.info.contact.name = "$(CONTACT_NAME)" | .info.contact.url = "$(CONTACT_URL)" | .info.contact.email = "$(CONTACT_EMAIL)"' "$(LOCAL_SPEC_PATH)"
+	$(call run_hook,x-post-init-spec)
 
 # Shows a list of available generators supported by the given OPENAPI_GENERATOR_VERSION
 # Output is a space-separated list of generator names to be used in GENERATORS_ALL variable
@@ -145,6 +154,9 @@ generate: generate-all
 # This target requires APP_BASE_DIR parameter to be supplied by user
 generate-all:
 	for generator in ${GENERATORS_ALL} ; do \
+	  echo '########################################'; \
+	  echo "# $$generator"; \
+	  echo '########################################'; \
 	  docker \
 		  run \
 		  --rm \
@@ -153,13 +165,19 @@ generate-all:
 		  --input-spec /local/$(LOCAL_SPEC_PATH) \
 		  --config /local/clients/$$generator/conf.json \
 		  --generator-name $$generator \
+			$(GENERATORS_EXTRA_ARGS) \
 		  --output /local/clients/$$generator/generated; \
 	done
+	$(call run_hook,x-post-generate-all)
 
 # Generate API clients for primary generators only
 # This target requires APP_BASE_DIR parameter to be supplied by user
 generate-primary:
+	set -e; \
 	for generator in ${GENERATORS_PRIMARY} ; do \
+	  echo '########################################'; \
+	  echo "# $$generator"; \
+	  echo '########################################'; \
 	  docker \
 		  run \
 		  --rm \
@@ -168,16 +186,21 @@ generate-primary:
 		  --input-spec /local/$(LOCAL_SPEC_PATH) \
 		  --config /local/clients/$$generator/conf.json \
 		  --generator-name $$generator \
+			$(GENERATORS_EXTRA_ARGS) \
 		  --output /local/clients/$$generator/generated; \
 	done
+	$(call run_hook,x-post-generate-primary)
 
 ################################################################
 # API clients building targets for primary generators
 
+build-javascript: UPDATE_GENERATOR_INPUTS_GITHUB_ID = $(shell yq .generator.inputs.github_id $(UPDATE_MAKEFILE).yml)
+build-javascript: UPDATE_GENERATOR_INPUTS_GITHUB_REPO = $(shell yq .generator.inputs.github_repo $(UPDATE_MAKEFILE).yml)
 build-javascript:
 	$(call run_hook,x-pre-build-javascript)
 	npm install -g babel-cli
 	cd clients/javascript/generated/ && \
+	  yq -i '.repository.url = "https://github.com/$(UPDATE_GENERATOR_INPUTS_GITHUB_ID)/$(UPDATE_GENERATOR_INPUTS_GITHUB_REPO)"' package.json && \
 	  npm install && \
 	  npm link && \
 	  npm run build
@@ -210,14 +233,13 @@ test: test-javascript test-python test-ruby
 
 test-javascript: build-javascript
 	$(call run_hook,x-pre-test-javascript)
-	npm install -g mocha
 	npm install validator
 	cd clients/javascript/generated/ && \
 	  npm install --dev && \
 	  npm run test
 	cd test/javascript/ && \
 	  npm link ../../clients/javascript/generated/ && \
-	  mocha --timeout 5000 .
+	  ../../clients/javascript/generated/node_modules/.bin/mocha --timeout 5000 .
 
 test-python: build-python
 	cd clients/python/generated/ && \
