@@ -3,16 +3,16 @@ name: Update Examples
 on: [workflow_dispatch]
 jobs:
   build:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     steps:
       - uses: actions/checkout@v7
         with:
           token: ${{ secrets.OAPICF_GITHUB_TOKEN }}
       - uses: cliffano/command-docker-action@v2.0.0
         with:
-          image: cliffano/studio:3.2.0
+          image: cliffano/studio:4.0.0
           command: 'make deps update-examples'
-      - uses: cliffano/save-changes-action@v1.0.0
+      - uses: cliffano/save-changes-action@v2.1.0
         with:
           message: "Update example components using latest generator"
           github_token: ${{ secrets.OAPICF_GITHUB_TOKEN }}
