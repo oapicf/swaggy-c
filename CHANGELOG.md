@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Add update-examples capability.
+- Add CodeQL code scanning workflow and Code Scanning Status badge
 
 ### Changed
 - Restrict GitHub Actions workflows token permissions to contents read

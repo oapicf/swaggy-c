@@ -4,6 +4,7 @@
 
 <!-- BEGIN:BADGES -->
 [![Build Status](https://github.com/cliffano/swaggy-c/actions/workflows/ci-workflow.yaml/badge.svg)](https://github.com/cliffano/swaggy-c/actions/workflows/ci-workflow.yaml)
+[![Code Scanning Status](https://github.com/oapicf/swaggy-c/workflows/CodeQL/badge.svg)](https://github.com/oapicf/swaggy-c/actions?query=workflow%3ACodeQL)
 <!-- END:BADGES -->
 
 # Swaggy C
