@@ -14,6 +14,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Restrict GitHub Actions workflows token permissions to contents read
 - Switch release workflows runner to ubuntu-slim
 
+### Fixed
+- Fix Build Status badge and installation URL to use oapicf GitHub organisation
+
 ## 6.8.0 - 2026-10-25
 ### Changed
 - Upgrade Ubuntu to 26.04

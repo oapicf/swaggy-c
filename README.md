@@ -3,7 +3,7 @@
 <!-- END:AVATAR -->
 
 <!-- BEGIN:BADGES -->
-[![Build Status](https://github.com/cliffano/swaggy-c/actions/workflows/ci-workflow.yaml/badge.svg)](https://github.com/cliffano/swaggy-c/actions/workflows/ci-workflow.yaml)
+[![Build Status](https://github.com/oapicf/swaggy-c/actions/workflows/ci-workflow.yaml/badge.svg)](https://github.com/oapicf/swaggy-c/actions/workflows/ci-workflow.yaml)
 [![Code Scanning Status](https://github.com/oapicf/swaggy-c/workflows/CodeQL/badge.svg)](https://github.com/oapicf/swaggy-c/actions?query=workflow%3ACodeQL)
 <!-- END:BADGES -->
 
@@ -17,7 +17,7 @@ Have a look at [Swaggy Jenkins](http://github.com/cliffano/swaggy-jenkins) as an
 
 ## Installation
 
-1. Copy `src/Makefile-swaggy-c` to be the `Makefile` of your project: `curl https://raw.githubusercontent.com/cliffano/swaggy-c/main/src/Makefile-swaggy-c -o Makefile`
+1. Copy `src/Makefile-swaggy-c` to be the `Makefile` of your project: `curl https://raw.githubusercontent.com/oapicf/swaggy-c/main/src/Makefile-swaggy-c -o Makefile`
 2. Create configuration file `swaggy-c.yml` with properties described in [Configuration](#configuration) section
 3. Run the available `Makefile` targets described in [Usage](#usage) section
 
